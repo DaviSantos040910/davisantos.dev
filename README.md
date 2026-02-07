@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
+# DevPortfolio - Portfólio para Programador Freelancer
 
-## Project info
+Um portfólio moderno e fácil de editar para programadores freelancers, com painel administrativo completo.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Funcionalidades
 
-## How can I edit this code?
+### Páginas Públicas
+- **Home**: Headline, bio, CTA e projetos em destaque
+- **Projetos**: Lista de projetos com cards interativos
+- **Projeto (detalhe)**: Descrição em Markdown, galeria, vídeo embed, links
+- **Sobre**: Experiência, serviços, stack, valores
+- **Contato**: Formulário de contato + links sociais
+- **SEO**: Metatags, Open Graph, sitemap
 
-There are several ways of editing your application.
+### Painel Admin (`/admin`)
+- Login com e-mail/senha
+- CRUD completo de projetos
+- Upload de imagens (thumbnail + galeria)
+- Preview de Markdown antes de publicar
+- Controle de publicação e destaque
 
-**Use Lovable**
+## 📋 Como Usar
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 1. Cadastrar Admin
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Acesse a aba **Cloud** no painel do Lovable
+2. Vá para **Authentication** > **Users**
+3. Clique em **Add User**
+4. Preencha e-mail e senha
+5. Acesse `/admin/login` e faça login
 
-**Use your preferred IDE**
+### 2. Adicionar/Editar Projetos
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Acesse `/admin` após fazer login
+2. Clique em **Novo Projeto**
+3. Preencha os campos:
+   - **Título**: Nome do projeto
+   - **Slug**: URL amigável (ex: `meu-projeto`)
+   - **Resumo**: Descrição curta para os cards
+   - **Descrição**: Conteúdo em Markdown
+   - **Tags**: Tecnologias utilizadas
+   - **Imagens**: Thumbnail e galeria
+   - **Links**: Demo, GitHub, vídeo, case study
+4. Ative **Publicar** para tornar visível
+5. Ative **Destaque** para aparecer na home
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 3. Personalizar Textos
 
-Follow these steps:
+Os textos da Home, Sobre e Contato podem ser editados diretamente nos arquivos:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- `src/pages/Home.tsx` - Headline, bio, features
+- `src/pages/About.tsx` - Experiência, serviços, stack, valores
+- `src/pages/Contact.tsx` - Informações de contato
+- `src/components/layout/Footer.tsx` - Links do rodapé
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 4. Personalizar Design
 
-# Step 3: Install the necessary dependencies.
-npm i
+- `src/index.css` - Cores, gradientes, sombras
+- `tailwind.config.ts` - Tokens do Tailwind
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🛠️ Stack Técnica
+
+- **Frontend**: React + TypeScript + Vite
+- **Estilos**: TailwindCSS + shadcn/ui
+- **Animações**: Framer Motion
+- **Backend**: Lovable Cloud
+- **Banco de Dados**: PostgreSQL
+- **Storage**: Cloud Storage
+- **Auth**: Cloud Auth
+
+## 📦 Estrutura de Pastas
+
+```
+src/
+├── components/
+│   ├── layout/         # Header, Footer, Layout
+│   ├── ui/             # Componentes shadcn
+│   ├── ProjectCard.tsx
+│   ├── MarkdownRenderer.tsx
+│   ├── ThemeToggle.tsx
+│   └── ProtectedRoute.tsx
+├── hooks/
+│   ├── useAuth.ts
+│   └── useProjects.ts
+├── pages/
+│   ├── admin/          # Dashboard, Login, Form
+│   ├── Home.tsx
+│   ├── Projects.tsx
+│   ├── ProjectDetail.tsx
+│   ├── About.tsx
+│   └── Contact.tsx
+├── types/
+│   └── project.ts
+└── integrations/
+    └── supabase/
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deploy
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+O projeto pode ser publicado diretamente pelo Lovable:
 
-**Use GitHub Codespaces**
+1. Clique no botão **Publish** no canto superior direito
+2. O site será publicado em um subdomínio `.lovable.app`
+3. Para domínio personalizado, configure nas opções de deploy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📝 Licença
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT - Use livremente para seu portfólio pessoal.
