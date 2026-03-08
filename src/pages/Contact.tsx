@@ -36,15 +36,31 @@ export default function Contact() {
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
 
-    // Simulate form submission
-    // In production, replace with actual email sending logic
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    console.log('Form data:', data);
-    toast.success('Mensagem enviada com sucesso! Entrarei em contato em breve.');
-    setIsSubmitted(true);
-    reset();
-    setIsSubmitting(false);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Erro ao enviar mensagem');
+      }
+
+      console.log('Form data sent:', result);
+      toast.success('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+      setIsSubmitted(true);
+      reset();
+    } catch (error) {
+      console.error('Submit error:', error);
+      toast.error('Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
